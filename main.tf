@@ -34,15 +34,12 @@ resource "aws_instance" "this" {
   ami                     = var.ami_id
   instance_type           = var.instance_type
   subnet_id               = var.subnet_id
+  key_name                = var.key_name   # 👈 ADD HERE
   vpc_security_group_ids  = [aws_security_group.this.id]
   disable_api_termination = var.environment == "prod" ? true : false
-
-resource "aws_instance" "this" {
-  ...
-  key_name = var.key_name   # 👈 MUST exist
-}
 
   tags = merge(var.tags, {
     Name = var.instance_name
   })
+}
 }
