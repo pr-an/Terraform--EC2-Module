@@ -40,3 +40,8 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+variable "key_name" {
+  description = "EC2 key pair"
+  type        = string
+}
+
